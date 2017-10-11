@@ -49,7 +49,7 @@ func Compress(filename string) ([]byte, error) {
     return nil, err
   }
 
-  //Create a gzip writer on top of file writer
+  //Create a gzip writer 
   var buf bytes.Buffer
   gzw := gzip.NewWriter(&buf)
   gzw.Write(nBytes)
