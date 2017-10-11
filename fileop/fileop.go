@@ -19,7 +19,7 @@ func Checksum(filename string) ([]byte, error) {
   defer file.Close()
 
   hash := md5.New()
-  _, err := io.Copy(hash,file)
+  _, err = io.Copy(hash,file)
   if err != nil {
     return nil, io.ErrUnexpectedEOF
   }
