@@ -54,14 +54,15 @@ func main() {
   }
   defer f.Close()
 
-  //Create a gzip writer
+  //Create a gzip writer gzip.Header struct consist of 
+  //metadata information, zr.Name = file name
   zw := gzip.NewWriter(f)
   zw.Name = filename
   defer zw.Close()
 
-  // Encrypt using md5 checksum as key
-  //r = strings.NewReader("Calculate the checksum")
-  key := sum
+  // For encrypt  md5 can be used for key but for simplicity using this
+  //  key := sum
+  key := make([]byte, 16)
   cblock, err := aes.NewCipher(key)
   if err != nil {
     fmt.Println(err)
